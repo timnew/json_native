@@ -1,7 +1,6 @@
 library json_native;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/contract.dart';
+export 'src/exception.dart';
+export 'src/functions.dart';
+export 'src/json_object_extension.dart';
