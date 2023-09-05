@@ -1,18 +1,22 @@
 # json_native
 
-[![Star this Repo](https://img.shields.io/github/stars/timnew/json_native.svg?style=flat-square)](https://github.com/timnew/json_native)
-[![Pub Package](https://img.shields.io/pub/v/json_native.svg?style=flat-square)](https://pub.dev/packages/json_native)
-[![Build Status](https://img.shields.io/github/workflow/status/timnew/json_native/test)](https://github.com/timnew/stated_result/actions?query=workflow%3Atest)
+[![Star this Repo](https://img.shields.io/github/stars/timnew/json_native)](https://github.com/timnew/json_native)
+[![Pub Package](https://img.shields.io/pub/v/json_native)](https://pub.dev/packages/json_native)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/timnew/json_native/test.yml)](https://github.com/timnew/json_native/actions/workflows/test.yml)
 
-To consume json data, `json_serialisation` isn't always the most handy option.
-Maybe because the JSON structure isn't clear, or json structure is dynamic, or we simply don't want to create so many classes just to read a few values.
+## Overview
 
-In these situation, we will need to handle the raw output from `jsonDecode`.
-It is a straightforward process, but not always as easy as it sounds.
+Need to work with JSON in Dart? `json_serializable`` might not always be your best bet, especially when:
 
-## Problem with `jsonDecode`
+- The JSON structure is unclear or dynamic.
+- You only need to extract a few values, making it overkill to create a full data model.
+- You're dealing with complex types that json_serializable can't handle, like union types.
 
-Given having a JSON string as
+In such cases, you might revert to raw `jsonDecode``, but that comes with its own set of challenges.
+
+## The Problem: using `jsonDecode`
+
+Consider the following JSON string:
 
 ```json
 {
@@ -29,7 +33,7 @@ Given having a JSON string as
 }
 ```
 
-To parse the JSON in dart, can consume the values in it, we will have code like this:
+Parsing this JSON in Dart usually involves code like:
 
 ```dart
 final root = jsonDecode(jsonString) as Map<String, dynamic>;
@@ -45,11 +49,18 @@ final baz = root['foo']['bar']['baz'] as bool;
 final value = root['mixed'][0]['object']['key'] as String;
 ```
 
-It is working but code is hard to read, is error-prone, is fragile to optional field, and hard to debug if thing goes wrong.
+This approach is functional but has several drawbacks:
 
-## With `json_native`
+- Code readability suffers.
+- It's error-prone.
+- Handling optional fields is tricky.
+- Debugging can be challenging.
 
-`Json Native` as its name suggested, is a solution designed to make this process easier.
+## The Solution: Using `json_native`
+
+`json_native` aims to simplify this process with more readable and less error-prone code.
+
+Here's how:
 
 ```dart
 import 'package:json_native/json_native.dart';
@@ -85,3 +96,11 @@ final baz = root.dig<bool>(['foo', 'bar', 'baz']);
 // dig also support mixed of list and object
 final value = root.dig<String>(['mixed', 0, 'object', 'key']);
 ```
+
+**Features:**
+
+- Type casting is automatically handled.
+- Supports nullable types.
+- Type inference eliminates the need for explicit generic parameters.
+- Provides strongly-typed lists.
+- Allows for nested object and list traversal with dig.
