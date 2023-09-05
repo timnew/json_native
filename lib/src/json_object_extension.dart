@@ -1,6 +1,6 @@
+import 'contract.dart';
 import 'exception.dart';
 import 'internal_helpers.dart';
-import 'contract.dart';
 
 /// Extension methods for [JsonObject]
 extension JsonObjectExtension on JsonObject {

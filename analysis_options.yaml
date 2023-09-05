@@ -1,4 +1,8 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lint/strict.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    always_use_package_imports: false # To support local package idea
+    sort_unnamed_constructors_first: false # To have Class._() as the first one
+    sort_pub_dependencies: false # To group dependencies by type
+

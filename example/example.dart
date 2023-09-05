@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, avoid_dynamic_calls, avoid_print
+
 import 'package:json_native/json_native.dart';
 
 const jsonString = """

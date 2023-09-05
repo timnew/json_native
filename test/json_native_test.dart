@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:json_native/json_native.dart';
+import 'package:test/test.dart';
 
 void main() {
   final throwsJsonTypeException = throwsA(isA<JsonTypeException>());

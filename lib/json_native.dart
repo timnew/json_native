@@ -1,3 +1,4 @@
+/// Json Native Library
 library json_native;
 
 export 'src/contract.dart';
