@@ -1,7 +1,7 @@
 name: json_native
 description: Extension and utils to use Map/List decoded from json easier.
 homepage: https://github.com/timnew/json_native
-version: 0.1.0
+version: 0.2.0
 
 environment:
   sdk: '>=2.19.0 <4.0.0'

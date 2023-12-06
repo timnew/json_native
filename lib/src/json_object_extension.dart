@@ -28,6 +28,14 @@ extension JsonObjectExtension on JsonObject {
   /// Try child [List] with given [key]. It returns `null` if failed.
   List<T>? tryGetList<T>(String key) => get<List?>(key)?.cast();
 
+  /// Get child map with given [key]
+  /// The difference between [getMap] and [getObj], is that [getMap] returns `Map<String, T>` instead of [JsonObject]
+  Map<String, T> getMap<T>(String key) => get<JsonObject>(key).cast();
+
+  /// Try child map with given [key]
+  /// The difference between [getMap] and [getObj], is that [getMap] returns `Map<String, T>` instead of [JsonObject]
+  Map<String, T>? tryGetMap<T>(String key) => get<JsonObject?>(key)?.cast();
+
   /// Get value across nested objects/list with given [keys]
   T dig<T>(List keys) {
     if (keys.isEmpty) {

@@ -168,6 +168,21 @@ void main() {
       expect(testObject.tryGetList('not_exist'), null);
     });
 
+    test('getMap', () {
+      expect(testObject.getMap<String>('obj'), {'key': 'value'});
+      expect(testObject.getMap<String>('obj'), isA<Map<String, String>>());
+      expect(
+        () => testObject.getMap('not_exist'),
+        throwsJsonTypeException,
+      );
+    });
+
+    test('tryGetMap', () {
+      expect(testObject.tryGetMap<String>('obj'), {'key': 'value'});
+      expect(testObject.tryGetMap<String>('obj'), isA<Map<String, String>>());
+      expect(testObject.tryGetMap<String>('not_exist'), null);
+    });
+
     group('tryDig', () {
       test('dig value', () {
         expect(testObject.tryDig<bool>(['foo', 'bar', 'baz']), true);
